@@ -1,19 +1,25 @@
-import { Client } from "node-appwrite";
+import { Client, Databases, ID } from "node-appwrite";
 import { appwriteConfig } from "@/lib/appwrite/config";
 
-const testConnection = async () => {
+const testCreateDocument = async () => {
   const client = new Client()
     .setEndpoint(appwriteConfig.endpointUrl)
     .setProject(appwriteConfig.projectId)
     .setKey(appwriteConfig.secretKey);
 
+  const databases = new Databases(client);
+
   try {
-    const response = await fetch(`${appwriteConfig.endpointUrl}/v1/health`);
-    const health = await response.json();
-    console.log("🔹 Status do Appwrite:", health);
+    const response = await databases.createDocument(
+      appwriteConfig.databaseId,
+      appwriteConfig.usersCollectionId,
+      ID.unique(),
+      { fullName: "Teste User", email: "teste@example.com" },
+    );
+    console.log("✅ Documento criado:", response);
   } catch (error) {
-    console.error("❌ Falha ao conectar ao Appwrite:", error);
+    console.error("❌ Falha ao criar documento:", error);
   }
 };
 
-testConnection();
+testCreateDocument();
