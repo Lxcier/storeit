@@ -95,7 +95,7 @@
     @apply text-sm leading-5 font-semibold;
   }
 
-  .body-1 {
+  .body-1, .empty-list {
     @apply leading-6;
   }
 
@@ -190,6 +190,13 @@
     @apply text-sm leading-5 mx-auto w-fit rounded-xl bg-error/5 px-8 py-4;
   }
 
+  /* Toast */
+
+  .error-toast {
+    background-color: #ff7474 !important;
+    border-radius: 10px !important;
+  }
+
   /* ROOT Layout */
   .main-content {
     @apply h-full flex-1 overflow-auto bg-light-400 px-5 py-7 sm:mr-7 sm:rounded-[30px] md:mb-7 md:px-9 md:py-10;
@@ -226,7 +233,39 @@
     @apply flex text-light-100 gap-4 w-full justify-start items-center px-6 h-[52px] rounded-full;
   }
   .mobile-sign-out-button {
-    @apply flex h-[52px] w-full items-center gap-4 rounded-full bg-brand/10 px-6 text-brand shadow-none transition-all hover:bg-brand/20 cursor-pointer;
+    @apply flex h-[52px] w-full items-center  gap-4 rounded-full bg-brand/10 px-6 text-brand shadow-none transition-all hover:bg-brand/20 cursor-pointer;
+  }
+
+  /* Type page */
+  .page-container {
+    @apply mx-auto flex w-full max-w-7xl flex-col items-center gap-8;
+  }
+  .total-size-section {
+    @apply flex mt-2 flex-col justify-between sm:flex-row sm:items-center;
+  }
+  .file-list {
+    @apply grid w-full gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4;
+  }
+  .sort-container {
+    @apply mt-5 flex items-center sm:mt-0 sm:gap-3;
+  }
+  .empty-list {
+    @apply mt-10 text-center text-light-200;
+  }
+
+  /* Card */
+  .file-card {
+    @apply flex w-full cursor-pointer flex-col gap-6 rounded-[18px] bg-white p-5 shadow-sm transition-all hover:drop-shadow-md;
+  }
+  .file-card-details {
+    @apply flex flex-col gap-2 text-light-100;
+  }
+  .file-card-dropdown{
+    @apply min-w-[347px]
+  }
+
+  .shad-dropdown-item {
+    @apply cursor-pointer;
   }
 
   /* Sidebar */

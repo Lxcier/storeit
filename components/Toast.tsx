@@ -1,3 +1,5 @@
+"use client";
+
 import { toast } from "sonner";
 
 import { Button } from "./ui/button";
@@ -7,14 +9,14 @@ export const Toast = () => {
     <Button
       variant={"outline"}
       onClick={() => {
-        toast("Upload Concluído!", {
-          description: `Upload do arquivo concluído com sucesso.`,
-          action: {
-            label: "Desfazer",
-            onClick: () => {
-              console.log("Faz algo");
-            },
-          },
+        toast("Nome do arquivo", {
+          description: (
+            <p className="text-brand text-center">
+              <span className="font-semibold">Nome do arquivo</span> excede o
+              tamanho máximo 50MB
+            </p>
+          ),
+          className: "bg-red rounded-[10px]",
         });
       }}
     >

@@ -19,7 +19,7 @@ import FileUploader from "@/components/FileUploader";
 import { signOutUser } from "@/lib/actions/user.actions";
 
 interface Props {
-  ownerId: string;
+  $id: string;
   avatar: string;
   fullName: string;
   accountId: string;
@@ -27,7 +27,7 @@ interface Props {
 }
 
 const MobileNavigation = ({
-  ownerId,
+  $id: ownerId,
   avatar,
   fullName,
   accountId,
@@ -95,12 +95,12 @@ const MobileNavigation = ({
               </nav>
               <Separator className={"my-5 bg-light-200/20"} />
               <div className={"flex flex-col justify-between gap-5 pb-5"}>
-                <FileUploader />
+                <FileUploader ownerId={ownerId} accountId={accountId} />
 
                 <button
                   type={"submit"}
                   className={"mobile-sign-out-button"}
-                  onClick={async () => await signOutUser}
+                  onClick={async () => await signOutUser()}
                 >
                   <Image
                     src={"/assets/icons/logout.svg"}
@@ -108,6 +108,7 @@ const MobileNavigation = ({
                     width={24}
                     height={24}
                   />
+                  <p>Logout</p>
                 </button>
               </div>
             </SheetHeader>
