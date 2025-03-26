@@ -69,7 +69,7 @@ export const sortTypes = [
   },
   {
     label: "Name (Z-A)",
-    value: "$createdAt-desc",
+    value: "name-desc",
   },
   {
     label: "Size (Highest)",
