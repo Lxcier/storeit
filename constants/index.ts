@@ -30,27 +30,54 @@ export const dropdownItems = [
   {
     label: "Rename",
     icon: "/assets/icons/edit.svg",
-    separator: true,
+    value: "rename",
   },
   {
     label: "Details",
     icon: "/assets/icons/info.svg",
-    separator: true,
+    value: "details",
   },
   {
     label: "Share",
     icon: "/assets/icons/share.svg",
-    separator: true,
+    value: "share",
   },
   {
     label: "Download",
     icon: "/assets/icons/download.svg",
-    separator: true,
+    value: "download",
   },
   {
-    label: "Move to Trash",
+    label: "Delete",
     icon: "/assets/icons/delete.svg",
-    separator: false,
+    value: "delete",
+  },
+];
+
+export const sortTypes = [
+  {
+    label: "Date created (newest)",
+    value: "$createdAt-desc",
+  },
+  {
+    label: "Date created (oldest)",
+    value: "$createdAt-asc",
+  },
+  {
+    label: "Name (A-Z)",
+    value: "name-asc",
+  },
+  {
+    label: "Name (Z-A)",
+    value: "$createdAt-desc",
+  },
+  {
+    label: "Size (Highest)",
+    value: "size-desc",
+  },
+  {
+    label: "Size (Lowest)",
+    value: "size-asc",
   },
 ];
 

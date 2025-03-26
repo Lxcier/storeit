@@ -74,11 +74,11 @@
     @apply text-[26px] leading-[36px] font-bold;
   }
 
-  .h3 {
+  .h3, .chart-title {
     @apply text-[20px] leading-[28px] font-medium;
   }
 
-  .h4 {
+  .h4, .summary-type-size {
     @apply text-[18px] leading-[20px] font-medium;
   }
 
@@ -86,20 +86,25 @@
   .sub1,
   .mobile-nav,
   .mobile-nav-item,
-  .mobile-sign-out-button {
+  .mobile-sign-out-button, .summary-type-title, .chart-description {
     @apply text-[16px] leading-[24px] font-semibold;
   }
 
   .sub2,
-  .preview-item-name {
+  .preview-item-name,
+  .file-details-value,.recent-file-name  {
     @apply text-sm leading-5 font-semibold;
   }
 
-  .body-1, .empty-list {
+  .body-1,
+  .empty-list, .empty-list {
     @apply leading-6;
   }
 
-  .body-2 {
+  .body-2,
+  .rename-input-field,
+  .file-details-label,
+  .share-input-field, .recent-file-date {
     @apply text-sm leading-5;
   }
 
@@ -120,7 +125,8 @@
     @apply max-w-7xl mx-auto px-5;
   }
   .primary-btn,
-  .uploader-button {
+  .uploader-button,
+  .modal-submit-button {
     @apply text-white bg-brand hover:bg-brand-100 transition-all rounded-full;
   }
   .flex-center,
@@ -133,7 +139,10 @@
 
   /* -- SHADCN CLASSES -- */
   .shad-no-focus,
-  .shad-input {
+  .shad-input,
+  .rename-input-field,
+  .share-input-field,
+  .search-input, .sort-select {
     @apply outline-none ring-offset-transparent focus:ring-transparent focus:ring-offset-0 focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-transparent focus-visible:ring-offset-0;
   }
   .shad-input {
@@ -176,6 +185,10 @@
     @apply !pt-0;
   }
 
+  .shad-dropdown-item {
+    @apply !cursor-pointer;
+  }
+
   /* AuthForm */
   .auth-form {
     @apply flex max-h-[800px] w-full max-w-[580px] flex-col justify-center space-y-6 transition-all lg:h-full lg:space-y-8;
@@ -190,11 +203,56 @@
     @apply text-sm leading-5 mx-auto w-fit rounded-xl bg-error/5 px-8 py-4;
   }
 
-  /* Toast */
+  /* ActionsDropdown */
+  .rename-input-field {
+    @apply h-[52px] w-full rounded-full border px-4 drop-shadow-md;
+  }
+  .delete-confirmation {
+    @apply text-center text-light-100;
+  }
+  .delete-file-name {
+    @apply font-medium text-brand-100;
+  }
+  .modal-cancel-button {
+    @apply cursor-pointer h-[52px] flex-1 rounded-full bg-white text-light-100 hover:bg-transparent hover:drop-shadow-lg;
+  }
+  .modal-submit-button {
+    @apply cursor-pointer !mx-0 h-[52px] w-full flex-1;
+  }
+  .share-wrapper {
+    @apply !mt-2 space-y-2;
+  }
+  .share-input-field {
+    @apply h-[52px] w-full rounded-full border px-4 drop-shadow-md;
+  }
+  .share-remove-user {
+    @apply rounded-full bg-transparent text-light-100 shadow-none hover:bg-transparent;
+  }
+  .remove-icon {
+    @apply aspect-square rounded-full;
+  }
 
+  /* Search */
+  .search {
+    @apply relative w-full md:max-w-[480px];
+  }
+  .search-input-wrapper {
+    @apply flex h-[52px] flex-1 items-center gap-3 rounded-full px-4 shadow;
+  }
+  .search-input {
+    @apply text-sm leading-5 placeholder:leading-6 w-full border-none p-0 shadow-none placeholder:text-light-200;
+  }
+  .search-result {
+    @apply absolute left-0 top-16 z-50 flex w-full flex-col gap-3 rounded-[20px] bg-white p-4;
+  }
+  .empty-result {
+    @apply text-sm leading-5 text-center text-light-100;
+  }
+
+  /* Toast */
   .error-toast {
-    background-color: #ff7474 !important;
-    border-radius: 10px !important;
+    background-color: #ff7474;
+    border-radius: 10px;
   }
 
   /* ROOT Layout */
@@ -236,6 +294,64 @@
     @apply flex h-[52px] w-full items-center  gap-4 rounded-full bg-brand/10 px-6 text-brand shadow-none transition-all hover:bg-brand/20 cursor-pointer;
   }
 
+  /* Dashboard */
+  .dashboard-container {
+    @apply mx-auto grid max-w-7xl grid-cols-1 gap-6 md:grid-cols-2 xl:gap-10;
+  }
+  .dashboard-summary-list {
+    @apply mt-6 grid grid-cols-1 gap-4 xl:mt-10 xl:grid-cols-2 xl:gap-9;
+  }
+  .dashboard-summary-card {
+    @apply relative mt-6 rounded-[20px] bg-white p-5 transition-all hover:scale-105;
+  }
+  .summary-type-icon {
+    @apply absolute -left-3 top-[-25px] z-10 w-[190px] object-contain;
+  }
+  .summary-type-size {
+    @apply relative z-20 w-full text-right;
+  }
+  .summary-type-title {
+    @apply relative z-20 text-center;
+  }
+  .dashboard-recent-files {
+    @apply h-full rounded-[20px] bg-white p-5 xl:p-8;
+  }
+  .recent-file-details {
+    @apply flex w-full flex-col xl:flex-row xl:justify-between;
+  }
+  .recent-file-name {
+    @apply line-clamp-1 w-full text-light-100 sm:max-w-[200px] lg:max-w-[250px];
+  }
+  .recent-file-date {
+    @apply text-light-100/80;
+  }
+  .empty-list {
+    @apply mt-10 text-center text-light-200;
+  }
+
+  /* Chart */
+  .chart {
+    @apply flex items-center rounded-[20px] bg-brand p-5 text-white md:flex-col xl:flex-row;
+  }
+  .chart-container {
+    @apply mx-auto aspect-square w-[180px] text-white xl:w-[250px];
+  }
+  .polar-grid {
+    @apply first:fill-white/20 last:fill-brand;
+  }
+  .chart-details {
+    @apply flex-1 items-center justify-center text-center px-3 py-0 sm:px-5 lg:p-3 xl:pr-5 w-full;
+  }
+  .chart-total-percentage {
+    @apply fill-white text-4xl font-bold;
+  }
+  .chart-title {
+    @apply font-bold md:text-center lg:text-left;
+  }
+  .chart-description {
+    @apply mt-2 w-full text-white/70 md:text-center lg:text-left;
+  }
+
   /* Type page */
   .page-container {
     @apply mx-auto flex w-full max-w-7xl flex-col items-center gap-8;
@@ -260,8 +376,8 @@
   .file-card-details {
     @apply flex flex-col gap-2 text-light-100;
   }
-  .file-card-dropdown{
-    @apply min-w-[347px]
+  .file-card-dropdown {
+    @apply min-w-[347px];
   }
 
   .shad-dropdown-item {
@@ -306,9 +422,27 @@
   .thumbnail-image {
     @apply size-full object-cover object-center;
   }
-
-  uploader-preview-loading {
+  .uploader-preview-loading {
     @apply object-cover;
+  }
+
+  /* Sort */
+  .sort-select {
+    @apply h-11 w-full rounded-[8px] border-transparent bg-white !shadow-sm sm:w-[210px] ;
+  }
+  .sort-select-content {
+    @apply drop-shadow-lg ;
+  }
+
+  /* ActionsModalContent */
+  .file-details-thumbnail {
+    @apply !mb-1 flex items-center gap-3 rounded-xl border border-light-200/40  p-3;
+  }
+  .file-details-label {
+    @apply w-[30%] text-light-100;
+  }
+  .file-details-value {
+    @apply flex-1;
   }
 }
 
